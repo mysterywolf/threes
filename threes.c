@@ -3,7 +3,7 @@
 *Released under MIT license by Harsh Vakharia (@harshjv)
 *https://github.com/harshjv/threes-c
 *
-*RT-Thread community @Meco
+*RT-Thread community by Meco
 *https://github.com/mysterywolf/threes
 *
 *2020-09-06     Meco    First version 
