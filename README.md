@@ -8,7 +8,24 @@ Threes，中文又称"[小三传奇](https://baike.baidu.com/item/threes/1302834
 
 ![putty](putty.png)
 
+## 使用方法
 
+```
+ RT-Thread online packages  --->
+    miscellaneous packages  --->
+        [*] threes: A game which was very famous in the year of 2014.
+```
+
+
+在Finsh终端下键入：
+
+```shell
+msh> threes
+```
+
+即可运行，通过WASD来模拟原版手机游戏中上下左右的滑动。
+
+原版游戏教学视频：https://www.bilibili.com/video/BV1Ds41117Gs
 
 ## License
 
