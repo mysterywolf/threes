@@ -425,4 +425,4 @@ static int threes_main() {
     freeBoard();
     return 0;
 }
-MSH_CMD_EXPORT_ALIAS(threes_main, threes, a terminal-game);
+MSH_CMD_EXPORT_ALIAS(threes_main, threes, an indie puzzle video game);
