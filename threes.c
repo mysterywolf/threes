@@ -6,7 +6,8 @@
 *RT-Thread community by Meco
 *https://github.com/mysterywolf/threes
 *
-*2020-09-06     Meco    First version 
+*2020-09-06     Meco Man   First version
+*2020-09-07     Meco Man   fixed memory leak
 */
 
 #include <sys/ioctl.h>
@@ -65,7 +66,6 @@ static Array* initArray(size_t initialSize) {
     a->array = (int *) calloc(sizeof(int), initialSize);
     a->used = 0;
     a->size = initialSize;
-
     return a;
 }
 
@@ -81,6 +81,7 @@ static void freeArray(Array *a) {
     free(a->array);
     a->array = NULL;
     a->used = a->size = 0;
+    free(a);
 }
 
 //static void printArray(Array* a) {
@@ -257,6 +258,17 @@ static int** allocateBoard() {
     return board;
 }
 
+static void freeBoard(void)
+{
+    unsigned char i;
+    
+    for(i=0;i<4;i++)
+    {
+        free(board[i]);
+    }
+    free(board);
+}
+
 static int bindNumber(int i, int j) {
     return (i * 10) + j;
 }
@@ -272,7 +284,6 @@ static Array* getAvailableTiles() {
             }
         }
     }
-
     return cells;
 }
 
@@ -284,7 +295,11 @@ static int addRandomTile() {
 
     r = cells->used;
 
-    if(r == 0) return 0;
+    if(r == 0) 
+    {   
+        freeArray(cells);
+        return 0;
+    }
 
     r = rand() % r;
 
@@ -292,14 +307,13 @@ static int addRandomTile() {
 
     if(board[r / 10][r % 10] != 0) {
         printf("Error: %d\n", r);
+        freeArray(cells);
         return 0;
     }
 
     board[r / 10][r % 10] = possible_values[rand() % sizev];
 
     freeArray(cells);
-    free(cells);
-
     return 1;
 }
 
@@ -405,8 +419,10 @@ static int threes_main() {
     printf("\n\n");
 
     printCenter("Threes C (https://github.com/harshjv/threes-c)\n");
+    printCenter("threes   (https://github.com/mysterywolf/threes)\n");
     printCenter("Released under MIT license by Harsh Vakharia (@harshjv)\n");
 
+    freeBoard();
     return 0;
 }
 MSH_CMD_EXPORT_ALIAS(threes_main, threes, a terminal-game);
