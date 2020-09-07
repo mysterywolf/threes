@@ -23,7 +23,7 @@ Threes，中文又称"[小三传奇](https://baike.baidu.com/item/threes/1302834
 msh> threes
 ```
 
-即可运行，通过WASD来模拟原版手机游戏中上下左右的滑动。
+即可运行，通过WASD按键来模拟原版手机游戏中上下左右的滑动，按Q退出游戏。
 
 原版游戏教学视频：https://www.bilibili.com/video/BV1Ds41117Gs
 
