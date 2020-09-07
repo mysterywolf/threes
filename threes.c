@@ -121,7 +121,7 @@ static int getColor(int colors[], int number) {
 
 static int intLength(int number) {
     if(number == 0) return 1;
-    return floor(log10(abs(number))) + 1;
+    return floorf(log10f(fabs((float)number))) + 1;
 }
 
 static void colorReset() {
@@ -394,7 +394,7 @@ static int threes_main() {
 
     for(i = 0; i < 4; i++) {
         for(j = 0; j < 4; j++) {
-            score += pow(3, log2(board[i][j]/3) + 1);
+            score += powf(3, log2f(board[i][j]/3) + 1);
         }
     }
 
