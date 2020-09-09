@@ -10,7 +10,7 @@
 *2020-09-07     Meco Man   fixed memory leak
 */
 
-#include <sys/ioctl.h>
+//#include <sys/ioctl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
