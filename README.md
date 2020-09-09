@@ -27,8 +27,8 @@ msh> threes
 
 即可运行，通过WASD按键来模拟原版手机游戏中上下左右的滑动，按Q退出游戏。
 
-原版游戏教学视频：<\br>
-https://www.bilibili.com/video/BV1Ds41117Gs <\br>
+原版游戏教学视频:   
+https://www.bilibili.com/video/BV1Ds41117Gs   
 https://www.bilibili.com/video/BV1PC4y1p7cb 
 
 
