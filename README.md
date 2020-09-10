@@ -15,7 +15,7 @@ Threes，中文又称"[小三传奇](https://baike.baidu.com/item/threes/1302834
 ```
  RT-Thread online packages  --->
     miscellaneous packages  --->
-        [*] threes: A game which was very famous in the year of 2014.
+        [*] threes: An indie puzzle video game which was very popular in the year of 2014.
 ```
 
 
