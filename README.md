@@ -6,7 +6,7 @@ Threes，中文又称"[小三传奇](https://baike.baidu.com/item/threes/1302834
 
 该游戏在2014年发布，运行在苹果手机上，在当时风靡全球，是2014年度App Store精选榜单中国区iPhone年度**最佳游戏**。[Harsh Vakharia](https://twitter.com/harshjv)将其用C语言实现并运行在Linux终端上(https://github.com/harshjv/threes-c )。我将其移植到了RT-Thread的Finsh组件上，大家就当开发无聊时打打趣。
 
-在STM32上运行并通过Putty超级终端显示效果如下：
+在MCU上运行并通过Putty超级终端显示效果如下：
 
 ![putty](putty.png)
 
