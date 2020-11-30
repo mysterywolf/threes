@@ -14,13 +14,13 @@ Threes，中文又称"[小三传奇](https://baike.baidu.com/item/threes/1302834
 
 ```
  RT-Thread online packages  --->
- 	games: games run on RT-Thread console  --->
-    	miscellaneous packages  --->
-        	[*] threes: An indie puzzle video game which was very popular in the year of 2014.
+  miscellaneous packages  --->
+ 	 games: games run on RT-Thread console  --->
+    [*] threes: An indie puzzle video game which was very popular in the year of 2014.
 ```
 
 
-在Finsh终端下键入：
+在终端下键入：
 
 ```shell
 msh> threes
