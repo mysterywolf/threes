@@ -17,13 +17,20 @@
 #include <time.h>
 #include <math.h>
 #include <unistd.h>
-
+#include <termios.h>
 #include <finsh.h>
 
-/*--------------------------input.h------------------------------------*/
-#include <termios.h>
-
 static struct termios old, new_;
+static int possible_values[] = { 1, 2, 3, 6 };
+static int sizev = 4;
+static int TILE_WIDTH = 10;
+static int BLANK_WIDTH = 2;
+static int TOTAL_WIDTH = (10 * 4) + (2 * 5);
+static int** board;
+static int background[] = { 69, 207, 255 };
+static int foreground[] = { 255, 255, 0 };
+static int shadow[] = { 63, 201, 11 };
+static struct winsize window;
 
 static void initTermios(int echo) {
   tcgetattr(0, &old);
@@ -49,11 +56,6 @@ static char getch(void) {
   return getch_(0);
 }
 
-//static char getche(void)  {
-//  return getch_(1);
-//}
-
-/*---------------------------array.h------------------------------------*/
 typedef struct {
     int* array;
     size_t used;
@@ -83,29 +85,6 @@ static void freeArray(Array *a) {
     a->used = a->size = 0;
     free(a);
 }
-
-//static void printArray(Array* a) {
-//    int i, j = a->used;
-
-//    for(i = 0; i < j; i++) {
-//        printf("%d, %d\n", a->array[i] / 10, a->array[i] % 10);
-//    }
-//}
-/*----------------------------------------------------------------------*/
-
-static int possible_values[] = { 1, 2, 3, 6 };
-static int sizev = 4;
-static int TILE_WIDTH = 10;
-static int BLANK_WIDTH = 2;
-static int TOTAL_WIDTH = (10 * 4) + (2 * 5);
-
-static int** board;
-
-static int background[] = { 69, 207, 255 };
-static int foreground[] = { 255, 255, 0 };
-static int shadow[] = { 63, 201, 11 };
-
-static struct winsize window;
 
 static int getColor(int colors[], int number) {
     switch(number) {
@@ -210,7 +189,7 @@ static int drawBoard() {
     clearScreen();
 
     //ioctl(STDOUT_FILENO, TIOCGWINSZ, &window);
-    window.ws_col =80;
+    window.ws_col =80; //暂时没有实现ioctl的替代方案
     
     printf("\n");
     printCenter("^____^");
