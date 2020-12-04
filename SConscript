@@ -1,5 +1,8 @@
-Import('rtconfig')
 from building import *
+
+group = []
+if not GetDepend(['PKG_USING_THREES']):
+    Return('group')
 
 src	= Glob('*.c')
 
