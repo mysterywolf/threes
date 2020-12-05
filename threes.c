@@ -10,7 +10,7 @@
 *2020-09-07     Meco Man   fixed memory leak
 */
 
-//#include <sys/ioctl.h>
+#include <sys/ioctl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -47,6 +47,7 @@ static void resetTermios(void) {
 static char getch_(int echo) {
   char ch;
   initTermios(echo);
+  tcflush(echo, TCIFLUSH); /* 清空输入缓存 */
   ch = getchar();
   resetTermios();
   return ch;
@@ -188,8 +189,7 @@ static int drawBoard() {
     
     clearScreen();
 
-    //ioctl(STDOUT_FILENO, TIOCGWINSZ, &window);
-    window.ws_col =80; //暂时没有实现ioctl的替代方案
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &window);
     
     printf("\n");
     printCenter("^____^");
