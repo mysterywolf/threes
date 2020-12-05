@@ -47,7 +47,7 @@ static void resetTermios(void) {
 static char getch_(int echo) {
   char ch;
   initTermios(echo);
-  tcflush(echo, TCIFLUSH); /* «Âø’ ‰»Îª∫¥Ê */
+  tcflush(echo, TCIFLUSH);
   ch = getchar();
   resetTermios();
   return ch;
