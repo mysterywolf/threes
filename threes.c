@@ -183,10 +183,14 @@ static void clearScreen() {
     printf("\x1b[1;1H\x1b[2J");
 }
 
+static void redrawScreen() {
+    printf("\x1b[1;1H");
+}
+
 static int drawBoard() {
     int i, j;
     
-    clearScreen();
+    redrawScreen();
 
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &window);
     
@@ -204,7 +208,6 @@ static int drawBoard() {
         for(j = 0; j < 4; j++) {
             if(j == 0) {
                 centerBlank();
-                // divider();
             }
             setColorScheme(getColor(background, board[i][j]), getColor(foreground, board[i][j]));
             printTileCenter(board[i][j]);
@@ -343,12 +346,17 @@ static void moveRight() {
     }
 }
 
+#define ANSI_SHOW_CUR   "\033[?25h"
+#define ANSI_HIDE_CUR   "\033[?25l"
+
 static int threes_main() {
     char c;
     char scorestr[17];
     unsigned int i, j, score = 0;
     unsigned char flag;
 
+    printf(ANSI_HIDE_CUR);
+    
     srand(time(NULL));
 
     board = allocateBoard();
@@ -362,6 +370,7 @@ static int threes_main() {
     addRandomTile();
     addRandomTile();
 
+    clearScreen();
     flag = (addRandomTile() != 0 && drawBoard());
     while(flag && (c = getch()) != 'q') {
         switch(c) {
@@ -401,6 +410,9 @@ static int threes_main() {
     printCenter("Released under MIT license by Harsh Vakharia (@harshjv)\n");
 
     freeBoard();
+    
+    printf(ANSI_SHOW_CUR);
+    
     return 0;
 }
 MSH_CMD_EXPORT_ALIAS(threes_main, threes, an indie puzzle video game);
