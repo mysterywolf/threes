@@ -180,17 +180,13 @@ static void dummyLine() {
 }
 
 static void clearScreen() {
-    printf("\x1b[1;1H\x1b[2J");
-}
-
-static void redrawScreen() {
-    printf("\x1b[1;1H");
+    printf("\x1b[1;1H\x1b[2J\x1b[3J");
 }
 
 static int drawBoard() {
     int i, j;
     
-    redrawScreen();
+    clearScreen();
 
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &window);
     
@@ -370,7 +366,6 @@ static int threes_main() {
     addRandomTile();
     addRandomTile();
 
-    clearScreen();
     flag = (addRandomTile() != 0 && drawBoard());
     while(flag && (c = getch()) != 'q') {
         switch(c) {
