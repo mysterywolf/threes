@@ -185,11 +185,11 @@ static void clearScreen() {
 
 static int drawBoard() {
     int i, j;
-    
+
     clearScreen();
 
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &window);
-    
+
     printf("\n");
     printCenter("^____^");
     printf("\n\n");
@@ -238,7 +238,7 @@ static int** allocateBoard() {
 static void freeBoard(void)
 {
     unsigned char i;
-    
+
     for(i=0;i<4;i++)
     {
         free(board[i]);
@@ -272,8 +272,8 @@ static int addRandomTile() {
 
     r = cells->used;
 
-    if(r == 0) 
-    {   
+    if(r == 0)
+    {
         freeArray(cells);
         return 0;
     }
@@ -352,7 +352,7 @@ static int threes_main() {
     unsigned char flag;
 
     printf(ANSI_HIDE_CUR);
-    
+
     srand(time(NULL));
 
     board = allocateBoard();
@@ -385,7 +385,7 @@ static int threes_main() {
                 moveRight();
                 flag = (addRandomTile() != 0 && drawBoard());
                 break;
-        } 
+        }
     }
 
     for(i = 0; i < 4; i++) {
@@ -405,9 +405,9 @@ static int threes_main() {
     printCenter("Released under MIT license by Harsh Vakharia (@harshjv)\n");
 
     freeBoard();
-    
+
     printf(ANSI_SHOW_CUR);
-    
+
     return 0;
 }
 MSH_CMD_EXPORT_ALIAS(threes_main, threes, an indie puzzle video game);
