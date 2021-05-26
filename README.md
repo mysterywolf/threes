@@ -1,4 +1,4 @@
-# Threes
+# Threes for RT-Thread
 
 <img src="logo.png" alt="logo" style="zoom:50%;" />
 
