@@ -10,12 +10,12 @@ Threes，中文又称"[小三传奇](https://baike.baidu.com/item/threes/1302834
 
 ![putty](putty.png)
 
-## 使用方法
+## 如何获取软件包
 
 ```
  RT-Thread online packages  --->
     miscellaneous packages  --->
-        games: games run on RT-Thread console  --->
+        entertainment: terminal games and other interesting software packages  --->
             [*] threes: An indie puzzle video game which was very popular in the year of 2014.
 ```
 
